@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <title>Calendarizador</title>
+</head>
+
+<body>
+    <div id="background" class="background-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#f3f4f5" fill-opacity=".8" d="M0,64L24,80C48,96,96,128,144,144C192,160,240,160,288,133.3C336,107,384,53,432,64C480,75,528,149,576,154.7C624,160,672,96,720,106.7C768,117,816,203,864,250.7C912,299,960,309,1008,288C1056,267,1104,213,1152,181.3C1200,149,1248,139,1296,149.3C1344,160,1392,192,1416,208L1440,224L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path>
+        </svg>
+    </div>
+    <div id="container" class="content-container">
+        <section class="hero" style="height: 6vh">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Añadir evento:
+                    </h1>
+                </div>
+            </div>
+        </section>
+        <div class="box app">
+            <div class="app-div" id="app-div">
+                <br>
+                <label for="title">-Titulo del evento</label>
+                <input type="text" id="getTitle" name="title" class="input is-rounded is-primary " required>
+                <br><br>
+                <label for="description">-Descripción del evento (opcional)</label>
+                <textarea type="text" id="getDesc" name="description" class="textarea is-primary is-rounded is-primary "></textarea>
+                <br>
+                <label for="link">-Link del evento (opcional)</label>
+                <input type="text" id="getLink" name="link" class="input is-rounded is-primary ">
+                <br><br>
+                <div id="dateInputs">
+                    <label for="date">-Fecha del evento</label>
+                    <input type="date" id="getDate" class="input is-rounded is-primary inputHeight" required>
+                </div>
+                <br>
+                <label for="startTime">-Hora de inicio del evento</label><br>
+                <input type="time" id="getTimeStart" class="input is-rounded is-primary inputHeight" name="startTime" min="00:00" max="23:00" required>
+                <br><br>
+                <label for="startTime">-Duración del evento</label><br>
+                <div class="duration-div">
+                    <h4>Horas</h4><input required type="number" class="input is-rounded is-primary inputHeight" placeholder="Ej. 1" min="0" max="24" id="getHourDuration">
+                    <h4>Minutos</h4><input required type="number" class="input is-rounded is-primary inputHeight" placeholder="Ej. 45" min="0" max="60" id="getMinuteDuration">
+                </div>
+                <br>
+                <label class="checkbox">
+                    Avisarme 
+                    <input type="number" class="input is-rounded" style="width: 7vw; height: 4vh;" max="60" id="getMinutesBefore">
+                    minutos antes
+                </label>
+                <br>
+                <br>
+                <button name="date" onclick="readData();" class="button is-success">Guardar evento</button>
+            </div>
+
+        </div>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Eventos añadidos:
+                    </h1>
+                    <h2 class="subtitle">
+                        Revisa que los datos sean correctos antes de generar tu archivo
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <div class="" id="eventsContainer">
+
+        </div>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        ¿Todo listo? <button class="button is-danger" onclick="sendData();">Generar ICS</button>
+                    </h1>
+                    <h2 class="subtitle">
+                        IMPORTANTE: LA LISTA DE EVENTOS NO DEBE ESTAR VACÍA
+                    </h2>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js" integrity="sha512-Izh34nqeeR7/nwthfeE0SI3c8uhFSnqxV0sI9TvTcXiFJkMd6fB644O64BRq2P/LA/+7eRvCw4GmLsXksyTHBg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+<script src="/static/js/domEvents.js"></script>
+<script src="/static/js/eventCreate.js"></script>
+
+</html>
